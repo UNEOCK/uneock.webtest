@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>謎解きサークル UNL:OCK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: #000000; /* 背景を黒に統一 */
+            color: #a0aec0; /* 基本の文字色 */
+        }
+        .hero-bg {
+            background-image: url('https://placehold.co/1200x600/000000/3b82f6?text=UNLOCK'); /* 仮の背景画像 (黒背景に青アクセント) */
+            background-size: cover;
+            background-position: center;
+        }
+        .glassmorphism {
+            background: rgba(17, 24, 39, 0.5); /* 黒に近いガラス効果 */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(55, 65, 81, 0.3); /* 濃いグレーのボーダー */
+        }
+        .btn-custom {
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .text-shadow {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* メインカラー: 水色・青系 */
+        .text-main-brand { color: #3b82f6; } /* 青 (例: text-blue-500) */
+        .text-secondary-brand { color: #0ea5e9; } /* 水色 (例: text-sky-500) */
+        .hover\:text-main-brand-dark:hover { color: #2563eb; } /* ホバー時の濃い青 */
+        .hover\:text-secondary-brand-dark:hover { color: #0284c7; } /* ホバー時の濃い水色 */
+
+        /* ボタンカラー: 水色系 */
+        .bg-button-brand { background-color: #0ea5e9; } /* 水色 (例: bg-sky-500) */
+        .hover\:bg-button-brand-dark:hover { background-color: #0284c7; } /* ホバー時の濃い水色 */
+        .text-button-text { color: #ffffff; } /* ボタンの文字は白 */
+        .text-button-text-dark_bg { color: #0f172a; } /*濃い背景のボタンの文字は濃いグレー*/
+
+
+        /* アクセントカラー: 黄色 */
+        .text-accent-brand { color: #facc15; } /* 黄色 (例: text-yellow-400) */
+        .hover\:text-accent-brand-dark:hover { color: #eab308; } /* ホバー時の濃い黄色 */
+        .shadow-accent-brand\/30:hover { box-shadow: 0 0 15px rgba(250, 204, 21, 0.3); }
+
+        /* ヘッダーのリンク色 */
+        header nav a, header #mobile-menu a {
+            color: #94a3b8; /* slate-400 */
+        }
+        header nav a:hover, header #mobile-menu a:hover {
+            color: #0ea5e9; /* 水色 */
+        }
+        header #mobile-menu a.bg-button-brand {
+             color: #ffffff; /* ボタン内の文字色 (白) */
+        }
+
+        /* 区切り線 */
+        .section-divider {
+            border-top: 1px solid #2563eb; /* 青色の細い線 (例: border-blue-600) */
+            margin-top: 3rem; /* 上マージン */
+            margin-bottom: 3rem; /* 下マージン */
+        }
+        /* 最初のセクションの上には線を表示しない */
+        section:first-of-type > .section-divider-top {
+            display: none;
+        }
+         /* フッターの前の区切り線は少しマージンを調整 */
+        footer ~ .section-divider {
+            margin-bottom: 1.5rem;
+        }
+
+    </style>
+</head>
+<body class="bg-black text-slate-300">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glassmorphism">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-accent-brand hover:text-accent-brand-dark transition-colors">
+                UNL:OCK
+            </a>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="transition-colors">サークルについて</a>
+                <a href="#activities" class="transition-colors">活動内容</a>
+                <a href="#news" class="transition-colors">お知らせ</a>
+                <a href="#join" class="bg-button-brand hover:bg-button-brand-dark text-button-text font-semibold px-4 py-2 rounded-lg btn-custom">参加する</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-slate-300 hover:text-secondary-brand focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 bg-opacity-95">
+            <a href="#about" class="block px-6 py-3 transition-colors">サークルについて</a>
+            <a href="#activities" class="block px-6 py-3 transition-colors">活動内容</a>
+            <a href="#news" class="block px-6 py-3 transition-colors">お知らせ</a>
+            <a href="#join" class="block px-6 py-3 bg-button-brand hover:bg-button-brand-dark text-button-text font-semibold text-center">参加する</a>
+        </div>
+    </header>
+
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-16">
+        <div class="text-center p-8 rounded-lg glassmorphism max-w-3xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-shadow text-secondary-brand">
+                <span class="block">鍵を開けるのは、</span>
+                <span class="block">君のひらめき。</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-slate-200 text-shadow">
+                謎解きサークル「UNL:OCK」へようこそ！<br>私たちは、頭と体を使い、仲間と協力して謎を解き明かすスリルと達成感を追求しています。
+            </p>
+            <a href="#about" class="bg-button-brand hover:bg-button-brand-dark text-button-text font-bold py-3 px-8 rounded-lg text-lg btn-custom">
+                もっと詳しく知る
+            </a>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="about" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-main-brand">UNL:OCKとは？</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://placehold.co/600x400/000000/3b82f6?text=チームで謎解き中" alt="[チームで謎解き中のイメージ]" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                </div>
+                <div class="text-lg text-slate-300 space-y-4">
+                    <p>UNL:OCKは、謎解きを愛する仲間が集まる場所です。日常に潜む小さな「？」から、壮大な物語が隠された大掛かりな謎まで、あらゆる「謎」に挑戦します。</p>
+                    <p>初心者の方も大歓迎！謎解きの楽しさを知ってもらうためのイベントや、メンバー同士で謎を作り合うワークショップなども企画しています。</p>
+                    <p>私たちのモットーは「<strong class="text-accent-brand">ひらめきを、解き放て！</strong>」。あなたもUNL:OCKで、まだ見ぬ謎と興奮に満ちた冒険を始めませんか？</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="activities" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-main-brand">主な活動内容</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300">
+                    <div class="text-accent-brand mb-4">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A7.986 7.986 0 0121 12c0 4.418-3.582 8-8 8h-5.257m0 0A8.008 8.008 0 0012 21a8.003 8.003 0 007.657-7.657c0-1.51-.424-2.923-1.172-4.143"></path></svg>
+                         </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-secondary-brand">定例謎解き会</h3>
+                    <p class="text-slate-400">週に一度、キャンパス内やオンラインで集まり、様々なジャンルの謎解きに挑戦します。持ち寄り謎や新作謎のテストプレイも。</p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300">
+                    <div class="text-accent-brand mb-4">
+                         <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.936 14.33A5.001 5.001 0 0012 14.5a5.001 5.001 0 00-2.936-.17m5.872 0c.354.02.706.03 1.058.03a5.002 5.002 0 005-5c0-2.47-1.79-4.534-4.148-4.931"></path></svg>
+                         </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-secondary-brand">オリジナル謎制作</h3>
+                    <p class="text-slate-400">メンバー自身が謎を作成し、発表する機会を設けています。学園祭などのイベントで、自分たちの作った謎を披露することも！</p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-lg shadow-lg hover:shadow-accent-brand/30 transition-shadow duration-300">
+                    <div class="text-accent-brand mb-4">
+                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m0 0a8.48 8.48 0 005.906-2.28M12 17.747a8.48 8.48 0 01-5.906-2.28m5.906 2.28L12 21.5l-2.953-2.032m0 0A8.483 8.483 0 0112 6.253a8.483 8.483 0 015.906 9.462M6.094 15.717A8.483 8.483 0 0112 6.253v0"></path></svg>
+                        </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-secondary-brand">外部イベント参加</h3>
+                    <p class="text-slate-400">プロが制作する謎解きイベントや、他大学の謎解きサークルとの交流イベントにも積極的に参加し、知見を広げます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="news" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-main-brand">お知らせ</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-slate-900 p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-xl font-semibold text-accent-brand mb-2">新歓謎解きイベント開催決定！</h3>
+                    <p class="text-sm text-slate-500 mb-2">2025年4月15日</p>
+                    <p class="text-slate-300">新入生向けの謎解き体験イベントを開催します！UNL:OCKの雰囲気を知りたい方はぜひご参加ください。詳細は後日発表！</p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-lg shadow-md mb-6">
+                    <h3 class="text-xl font-semibold text-accent-brand mb-2">夏合宿の行き先アンケート実施中</h3>
+                    <p class="text-sm text-slate-500 mb-2">2025年3月28日</p>
+                    <p class="text-slate-300">今年の夏合宿、どこで謎解きしたい？メンバー専用ページでアンケートを実施しています。回答期限は4月10日まで！</p>
+                </div>
+                <div class="text-center mt-8">
+                    <a href="#" class="text-secondary-brand hover:text-main-brand-dark font-semibold text-lg">もっと見る &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <section id="join" class="py-16 md:py-20 bg-black">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-main-brand">UNL:OCKに参加しよう！</h2>
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                謎解きが好き、新しいことに挑戦したい、面白い仲間と出会いたい…<br>
+                そんなあなたをUNL:OCKは待っています！少しでも興味を持ったら、お気軽にご連絡ください。
+            </p>
+            <a href="mailto:info@unlock-example.com" class="bg-button-brand hover:bg-button-brand-dark text-button-text-dark_bg font-bold py-4 px-10 rounded-lg text-xl btn-custom">
+                お問い合わせはこちら
+            </a>
+            <p class="mt-6 text-slate-400">（メールアドレス: info@unlock-example.com）</p>
+        </div>
+    </section>
+
+    <footer class="bg-black pt-8 pb-8 text-center"> <hr class="border-t-1 border-blue-600 mb-8 w-full max-w-screen-xl mx-auto"> <div class="container mx-auto px-6">
+            <p class="text-slate-400">&copy; 2025 謎解きサークル UNL:OCK. All Rights Reserved.</p>
+            <p class="text-sm text-slate-500 mt-2">
+                このサイトは架空のサークルのものです。
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューのトグル
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // モバイルメニューが開いていたら閉じる
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
